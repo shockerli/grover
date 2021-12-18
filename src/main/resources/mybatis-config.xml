@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- MyBatis配置文件 -->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- 开启驼峰映射，否则查询结果不能转成resultType -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <typeAliases>
+        <!--  配置包下的所有别名  -->
+        <package name="com.upfor.grover.entity"/>
+    </typeAliases>
+    <mappers>
+        <!--  引入mapper文件  -->
+        <mapper resource="mybatis/UserMapper.xml"/>
+    </mappers>
+</configuration>

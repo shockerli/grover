@@ -1,7 +1,8 @@
 package com.upfor.grover.mapper;
 
-import com.upfor.grover.entity.User;
+import com.upfor.grover.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * User单表的所有SQL操作
@@ -9,6 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
 
-    User getById(Long id);
+    UserEntity getById(@Param("id") Long id);
 
 }

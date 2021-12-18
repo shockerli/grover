@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.upfor.grover.mapper.UserMapper">
+    <sql id="TABLE_NAME">user</sql>
+    <sql id="ALL_COLUMNS">
+        id
+        ,
+        username,
+        create_at,
+        update_at
+    </sql>
+
+    <sql id="COMMON_SELECT_ALL_COLUMNS">
+        SELECT
+        <include refid="ALL_COLUMNS"/>
+        FROM
+        <include refid="TABLE_NAME"/>
+    </sql>
+
+    <select id="getById" resultType="UserEntity">
+        <include refid="COMMON_SELECT"/>
+        WHERE id=#{id}
+    </select>
+
+</mapper>
