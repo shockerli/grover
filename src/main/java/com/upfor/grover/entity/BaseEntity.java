@@ -17,13 +17,13 @@ public class BaseEntity {
      * <p>
      * 数据第一次创建时的时间，不可更改
      */
-    private Long createAt;
+    private Long createdAt;
 
     /**
      * 最后修改时间
      * <p>
      * 数据每次被修改都会更新该时间
      */
-    private Long updateAt;
+    private Long updatedAt;
 
 }

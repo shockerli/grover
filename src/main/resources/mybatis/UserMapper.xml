@@ -8,8 +8,8 @@
         id
         ,
         username,
-        create_at,
-        update_at
+        created_at,
+        updated_at
     </sql>
 
     <sql id="COMMON_SELECT_ALL_COLUMNS">
@@ -20,7 +20,7 @@
     </sql>
 
     <select id="getById" resultType="UserEntity">
-        <include refid="COMMON_SELECT"/>
+        <include refid="COMMON_SELECT_ALL_COLUMNS"/>
         WHERE id=#{id}
     </select>
 

@@ -1,10 +1,17 @@
 package com.upfor.grover.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-@Configuration
-@ComponentScan(value = {"com.upfor.grover"})
+@Component
+@ConfigurationProperties(value = "grover")
+@Data
 public class AppConfig {
+
+    /**
+     * Author of project
+     */
+    private String author = "jioby";
 
 }

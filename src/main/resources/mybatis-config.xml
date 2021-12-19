@@ -7,13 +7,19 @@
     <settings>
         <!-- 开启驼峰映射，否则查询结果不能转成resultType -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="20"/>
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="defaultExecutorType" value="REUSE"/>
     </settings>
     <typeAliases>
         <!--  配置包下的所有别名  -->
         <package name="com.upfor.grover.entity"/>
     </typeAliases>
-    <mappers>
-        <!--  引入mapper文件  -->
-        <mapper resource="mybatis/UserMapper.xml"/>
-    </mappers>
 </configuration>

@@ -1,0 +1,2 @@
+### 根据ID查询用户信息
+GET {{host}}/api/user/{{user_id}}
