@@ -1,5 +1,6 @@
 package com.upfor.grover.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -10,6 +11,7 @@ public class BaseEntity {
      * <p>
      * 主键ID, 其他表的user_id
      */
+    @JsonProperty(value = "id")
     private Long id;
 
     /**
@@ -17,6 +19,7 @@ public class BaseEntity {
      * <p>
      * 数据第一次创建时的时间，不可更改
      */
+    @JsonProperty(value = "created_at")
     private Long createdAt;
 
     /**
@@ -24,6 +27,7 @@ public class BaseEntity {
      * <p>
      * 数据每次被修改都会更新该时间
      */
+    @JsonProperty(value = "updated_at")
     private Long updatedAt;
 
 }

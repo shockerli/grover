@@ -1,0 +1,32 @@
+server:
+  # 服务端口
+  port: 3120
+
+spring:
+  # 应用名称
+  application:
+    name: Grover
+
+  # 数据源
+  datasource:
+    # 数据库驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据源名称
+    name: defaultDataSource
+    # 数据库连接地址
+    url: jdbc:mysql://localhost:3306/grover?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    # 数据库用户名&密码：
+    username: root
+    password: root
+    # 连接池
+    hikari:
+      maximum-pool-size: 40
+
+# MyBatis
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mybatis/*Mapper.xml
+
+# 自定义配置
+grover:
+  author: jioby
