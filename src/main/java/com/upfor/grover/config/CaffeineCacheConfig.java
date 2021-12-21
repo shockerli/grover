@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Duration;
 
 @Configuration
-public class GuavaCacheConfig {
+public class CaffeineCacheConfig {
 
     /**
      * 一个缓存池的配置与实例初始化
