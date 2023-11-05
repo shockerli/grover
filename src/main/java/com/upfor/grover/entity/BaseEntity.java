@@ -1,5 +1,8 @@
 package com.upfor.grover.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -12,6 +15,7 @@ public class BaseEntity {
      * 主键ID, 其他表的user_id
      */
     @JsonProperty(value = "id")
+    @TableId(value = "id", type = IdType.AUTO) // 主键注解
     private Long id;
 
     /**
@@ -20,6 +24,7 @@ public class BaseEntity {
      * 数据第一次创建时的时间，不可更改
      */
     @JsonProperty(value = "created_at")
+    @TableField(value = "created_at") // 字段注解
     private Long createdAt;
 
     /**
@@ -28,6 +33,7 @@ public class BaseEntity {
      * 数据每次被修改都会更新该时间
      */
     @JsonProperty(value = "updated_at")
+    @TableField(value = "updated_at")
     private Long updatedAt;
 
 }

@@ -4,24 +4,4 @@
 
 <mapper namespace="com.upfor.grover.mapper.UserMapper">
     <sql id="TABLE_NAME">user</sql>
-    <sql id="ALL_COLUMNS">
-        id
-        ,
-        username,
-        created_at,
-        updated_at
-    </sql>
-
-    <sql id="COMMON_SELECT_ALL_COLUMNS">
-        SELECT
-        <include refid="ALL_COLUMNS"/>
-        FROM
-        <include refid="TABLE_NAME"/>
-    </sql>
-
-    <select id="getById" resultType="UserEntity">
-        <include refid="COMMON_SELECT_ALL_COLUMNS"/>
-        WHERE id=#{id}
-    </select>
-
 </mapper>
