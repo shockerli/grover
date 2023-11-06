@@ -29,8 +29,16 @@ spring:
 
 # MyBatis-Plus
 mybatis-plus:
-  config-location: classpath:mybatis-config.xml
-  mapper-locations: classpath:mybatis/*Mapper.xml
+  configuration:
+    # 项目采用Logback，MyBatis默认没有支持Logback，但是支持SLF4J，因为Logback实现了SLF4J接口
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    banner: false
+
+# Logging
+logging:
+  level:
+    com.upfor.grover.mapper: debug # MyBatis SQL日志
 
 # 自定义配置
 grover:
