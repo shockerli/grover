@@ -6,8 +6,11 @@
     <property name="LOG_PATH" value="./runtime/logs"/>
     <!-- 日志文件路径 -->
     <property name="LOG_FILE" value="${LOG_PATH}/application.log"/>
-    <!-- 控制台日志格式 -->
+    <!-- 控制台日志格式（无颜色） -->
     <property name="CONSOLE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} [%.12X{requestId}] %msg%n"/>
+    <!-- 控制台日志格式（含颜色） -->
+    <property name="CONSOLE_LOG_COLOR_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %yellow([%thread]) %cyan(%logger{36}) %highlight([%.12X{requestId}]) %msg%n"/>
     <!-- 文件日志格式 -->
     <property name="FILE_LOG_PATTERN"
@@ -35,7 +38,7 @@
     <!-- 控制台日志记录器 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <pattern>${CONSOLE_LOG_COLOR_PATTERN}</pattern>
             <charset>utf8</charset>
         </encoder>
     </appender>
@@ -43,6 +46,6 @@
     <root>
         <level value="INFO"/>
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="FILE"/>
+        <!-- <appender-ref ref="FILE"/> -->
     </root>
 </configuration>

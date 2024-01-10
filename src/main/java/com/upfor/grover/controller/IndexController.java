@@ -1,24 +1,22 @@
 package com.upfor.grover.controller;
 
 import com.upfor.grover.config.AppConfig;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+@Slf4j
 @RestController
 public class IndexController {
 
-    @Value("${spring.application.name}")
-    private String appName;
-
     @Resource
-    AppConfig appConfig;
+    private AppConfig appConfig;
 
     @RequestMapping("")
     public String index() {
-        return String.format("Welcome to %s's %s!", appConfig.getAuthor(), appName);
+        return String.format("Welcome to %s's %s!", appConfig.getAuthor(), appConfig.getAppName());
     }
 
 }

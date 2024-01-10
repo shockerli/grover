@@ -26,13 +26,13 @@ public class RequestLoggingFilter extends AbstractRequestLoggingFilter {
     protected String beforeMessageSuffix = "]";
     protected String afterMessagePrefix = "AfterRequest [";
     protected String afterMessageSuffix = "]";
-    protected String requestIdHeader = "request-id";
 
-    /**
-     *
-     */
+    @Setter
+    protected String requestIdHeader = "X-Request-ID";
+
     @Setter
     protected boolean includeResponseBody = false;
+
     @Setter
     protected boolean includeElapsedTime = true;
 

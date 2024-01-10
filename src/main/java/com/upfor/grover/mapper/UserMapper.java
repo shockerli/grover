@@ -1,7 +1,7 @@
 package com.upfor.grover.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.upfor.grover.entity.UserEntity;
+import com.upfor.grover.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,6 +11,6 @@ import org.apache.ibatis.annotations.Mapper;
  * 1) 一个Mapper内的方法名不可重名（不可重载）
  */
 @Mapper
-public interface UserMapper extends BaseMapper<UserEntity> {
+public interface UserMapper extends BaseMapper<User> {
 
 }

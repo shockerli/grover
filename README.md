@@ -11,7 +11,8 @@ A best practice for Spring Boot Web.
 - Maven: 依赖管理
 - JUnit
 - Jackson: JSON序列化
-- Guava: 工具库（集合、缓存、位图、原语等等）
+- [Guava](https://github.com/google/guava): 工具库（集合、缓存、位图、原语等等）
+- [Hutool](https://github.com/dromara/hutool): 工具库（日期、加密、反射、文件、正则等等）
 - Javassist: 动态编辑Java字节码
 - [OkHttp](https://github.com/square/okhttp): HTTP客户端
 

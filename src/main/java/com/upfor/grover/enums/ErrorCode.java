@@ -1,55 +1,16 @@
 package com.upfor.grover.enums;
 
 /**
- * API Error Code
+ * 错误码接口
  */
-public enum ErrorCode {
+public interface ErrorCode {
 
-    DEFAULT(0, "Unknown Error"),
-    OK(200, "OK");
+    int getCode();
 
-    /**
-     * Error Code
-     */
-    public final int code;
+    String getMsg();
 
-    /**
-     * Error Message
-     */
-    public final String msg;
-
-    ErrorCode(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
-
-    /**
-     * Get ErrorCode by code
-     *
-     * @param code Error Code
-     * @return ErrorCode
-     */
-    public static ErrorCode get(int code) {
-        for (ErrorCode v : ErrorCode.values()) {
-            if (v.code == code) {
-                return v;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Get ErrorCode by code, if not found, return default
-     *
-     * @param code Error Code
-     * @return ErrorCode
-     */
-    public static ErrorCode getWithDefault(int code) {
-        ErrorCode errorCode = get(code);
-        if (errorCode == null) {
-            return DEFAULT;
-        }
-        return errorCode;
+    default Object[] getArgs() {
+        return new Object[0];
     }
 
 }

@@ -1,7 +1,8 @@
 package com.upfor.grover.controller;
 
-import com.github.benmanes.caffeine.cache.Cache;
-import com.upfor.grover.entity.UserEntity;
+import com.upfor.grover.entity.User;
+import com.upfor.grover.enums.ResultCode;
+import com.upfor.grover.result.CommonResult;
 import com.upfor.grover.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -14,24 +15,17 @@ import javax.annotation.Resource;
 public class UserController {
 
     @Resource
-    UserService userService;
-
-    @Resource
-    Cache<Long, UserEntity> userCacheById;
+    private UserService userService;
 
     @ResponseBody
     @GetMapping(value = "/{id}")
-    public UserEntity getById(@PathVariable Long id) {
+    public CommonResult<?> getById(@PathVariable Long id) {
         log.info("Param: id={}", id);
-        UserEntity user = userCacheById.getIfPresent(id);
+        User user = userService.getById(id);
         if (user == null) {
-            user = userService.getById(id);
-            if (user == null) {
-                user = new UserEntity();
-            }
-            userCacheById.put(id, user);
+            return CommonResult.failed(ResultCode.USER_NOT_EXIST);
         }
-        return user;
+        return CommonResult.success(user);
     }
 
 }
