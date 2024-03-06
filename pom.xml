@@ -97,6 +97,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <!-- Lombok 不需要运行时 -->
+            <scope>provided</scope>
             <!-- optional：可选的依赖 -->
             <!-- 假设其他项目依赖本项目，可防止将此依赖传递到其他项目或模块中 -->
             <optional>true</optional>

@@ -1,5 +1,7 @@
 package com.upfor.grover.filter;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import org.slf4j.MDC;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +21,8 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.UUID;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class RequestLoggingFilter extends AbstractRequestLoggingFilter {
 
     // configures

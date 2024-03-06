@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.upfor.grover.mapper") // 配置 MapperScan 注解
-public class GroverApplication {
+public class Grover {
 
     /**
      * 应用程序主入口
@@ -15,7 +15,7 @@ public class GroverApplication {
      */
     public static void main(String[] args) {
         // 启动Spring
-        SpringApplication.run(GroverApplication.class, args);
+        SpringApplication.run(Grover.class, args);
     }
 
 }
