@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.upfor.grover.constant.DateTimeConst;
+import com.upfor.grover.helper.JSON;
 import lombok.Data;
 
 import java.time.format.DateTimeFormatter;
@@ -66,6 +67,10 @@ public class BaseEntity {
     public String formattedUpdatedAt(DateTimeFormatter formatter) {
         return LocalDateTimeUtil.of(this.getUpdatedAt())
                 .format(formatter != null ? formatter : DateTimeConst.DATE_TIME_FORMATTER);
+    }
+
+    public String toJSON() {
+        return JSON.toJSON(this);
     }
 
 }

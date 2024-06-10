@@ -3,6 +3,8 @@ server:
   port: 3120
 
 spring:
+  profiles:
+    active: dev
   # 应用名称
   application:
     name: Grover

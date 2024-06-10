@@ -2,6 +2,7 @@ package com.upfor.grover.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
@@ -18,6 +19,7 @@ import lombok.Getter;
  * 4. 后面2位代码表示具体的细分业务错误信息，从01-99<br>
  */
 @Getter
+@AllArgsConstructor
 public enum ResultCode implements ErrorCode {
 
     SUCCESS(200, "Success"),
@@ -33,11 +35,6 @@ public enum ResultCode implements ErrorCode {
     @EnumValue // 通用枚举注解，标识数据库存储的值
     private final int code; // 错误码
     private final String msg; // 错误描述
-
-    ResultCode(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
 
     public static ResultCode getByCode(int code) {
         for (ResultCode resultCode : ResultCode.values()) {

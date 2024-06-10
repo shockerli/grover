@@ -2,10 +2,13 @@ package com.upfor.grover.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.logging.log4j.util.Strings;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
@@ -17,9 +20,11 @@ import java.util.Optional;
  * 2. 如果只想获取分页参数，请使用 {@code new PageDto(request)}
  */
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageDto {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PageDto extends BaseDto {
 
     public static Integer DEFAULT_PAGE_SIZE = 10;
 
@@ -41,13 +46,13 @@ public class PageDto {
     public PageDto(HttpServletRequest request) {
         // 分页页码
         // 兼容pageNum和page两种参数名
-        Optional.ofNullable(request.getParameter("pageNum")).ifPresent(s -> this.page = Integer.parseInt(s));
-        Optional.ofNullable(request.getParameter("page")).ifPresent(s -> this.page = Integer.parseInt(s));
+        Optional.ofNullable(request.getParameter("page")).ifPresent(s -> this.page = Strings.isBlank(s) ? 0 : Integer.parseInt(s));
+        Optional.ofNullable(request.getParameter("pageNum")).ifPresent(s -> this.page = Strings.isBlank(s) ? 0 : Integer.parseInt(s));
 
         // 分页大小
         // 兼容pageSize和size两种参数名
-        Optional.ofNullable(request.getParameter("pageSize")).ifPresent(s -> this.size = Integer.parseInt(s));
-        Optional.ofNullable(request.getParameter("size")).ifPresent(s -> this.size = Integer.parseInt(s));
+        Optional.ofNullable(request.getParameter("size")).ifPresent(s -> this.size = Strings.isBlank(s) ? 0 : Integer.parseInt(s));
+        Optional.ofNullable(request.getParameter("pageSize")).ifPresent(s -> this.size = Strings.isBlank(s) ? 0 : Integer.parseInt(s));
     }
 
     /**

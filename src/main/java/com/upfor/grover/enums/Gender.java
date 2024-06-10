@@ -2,10 +2,19 @@ package com.upfor.grover.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.AllArgsConstructor;
+
+import java.io.IOException;
 
 /**
  * 性别
  */
+@AllArgsConstructor
+@JsonDeserialize(using = Gender.Deserializer.class)
 public enum Gender {
 
     MALE(1, "Male"),
@@ -18,9 +27,17 @@ public enum Gender {
     public final int value; // 枚举值
     public final String desc; // 枚举描述
 
-    Gender(int value, String desc) {
-        this.value = value;
-        this.desc = desc;
+    public static class Deserializer extends JsonDeserializer<Gender> {
+        @Override
+        public Gender deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+            int value = jsonParser.getIntValue();
+            for (Gender item : Gender.values()) {
+                if (item.value == value) {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
 
 }
