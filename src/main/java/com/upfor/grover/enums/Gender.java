@@ -1,11 +1,11 @@
 package com.upfor.grover.enums;
 
-import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.mybatisflex.annotation.EnumValue;
 import lombok.AllArgsConstructor;
 
 import java.io.IOException;

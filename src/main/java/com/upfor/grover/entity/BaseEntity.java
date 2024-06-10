@@ -1,11 +1,10 @@
 package com.upfor.grover.entity;
 
 import cn.hutool.core.date.LocalDateTimeUtil;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mybatisflex.annotation.Column;
+import com.mybatisflex.annotation.Id;
+import com.mybatisflex.annotation.KeyType;
 import com.upfor.grover.constant.DateTimeConst;
 import com.upfor.grover.helper.JSON;
 import lombok.Data;
@@ -26,7 +25,7 @@ public class BaseEntity {
      * 主键ID, 其他表的user_id
      */
     @JsonProperty(value = "id")
-    @TableId(value = "id", type = IdType.AUTO) // 字段名、主键注解
+    @Id(value = "id", keyType = KeyType.Auto) // 字段名、主键注解
     private Long id;
 
     /**
@@ -35,7 +34,7 @@ public class BaseEntity {
      * 数据第一次创建时的时间，不可更改
      */
     @JsonProperty(value = "created_at")
-    @TableField(value = "created_at", fill = FieldFill.INSERT) // 字段名、插入时填充
+    @Column(value = "created_at", onInsertValue = "now()") // 字段名、插入时填充
     private Long createdAt;
 
     /**
@@ -55,7 +54,7 @@ public class BaseEntity {
      * 数据每次被修改都会更新该时间
      */
     @JsonProperty(value = "updated_at")
-    @TableField(value = "updated_at", fill = FieldFill.INSERT_UPDATE) // 字段名、插入和更新时填充
+    @Column(value = "updated_at", onInsertValue = "now()", onUpdateValue = "now()") // 字段名、插入和更新时填充
     private Long updatedAt;
 
     /**

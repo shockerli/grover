@@ -9,45 +9,17 @@ spring:
   application:
     name: Grover
 
-  # 数据源
-  datasource:
-    dynamic: # 多数据源，使用了dynamic-datasource，参考文档：https://baomidou.com/pages/a61e1b
-      primary: mysql # 默认数据源
-      datasource:
-        mysql: # MySQL
-          # 数据库驱动
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          # 数据库连接地址
-          url: jdbc:mysql://localhost:3306/grover?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-          # 数据库用户名&密码
-          username: root
-          password: root
-          # 连接池
-          hikari:
-            # 连接池最小空闲连接数
-            minimum-idle: 5
-            # 空闲连接存活最大时间，默认600000（10分钟）
-            idle-timeout: 180000
-            # 连接池最大连接数，默认是10
-            maximum-pool-size: 10
-            # 连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-            max-lifetime: 1800000
-            # 数据库连接超时时间,默认30秒，即30000
-            connection-timeout: 30000
-            connection-test-query: SELECT 1
-        sqlite3: # Sqlite3
-          driver-class-name: org.sqlite.JDBC
-          url: jdbc:sqlite::resource:sqlite/grover.db
-  main:
-    banner-mode: off
-
-# MyBatis-Plus
-mybatis-plus:
-  configuration:
-    # 项目采用Logback，MyBatis默认没有支持Logback，但是支持SLF4J，因为Logback实现了SLF4J接口
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+# MyBatis-Flex
+mybatis-flex:
   global-config:
-    banner: false
+    print-banner: false
+  datasource:
+    mysql:
+      url: jdbc:mysql://localhost:3306/grover?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      username: root
+      password: root
+    sqlite3:
+      url: jdbc:sqlite::resource:sqlite/grover.db
 
 # Logging
 logging:

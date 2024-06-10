@@ -6,34 +6,35 @@
     <property name="LOG_PATH" value="./runtime/logs"/>
     <!-- 日志文件路径 -->
     <property name="LOG_FILE" value="${LOG_PATH}/application.log"/>
+    <!-- 文件日志格式 -->
+    <property name="FILE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{requestId}] [%thread] %logger{36}.%method:%line %msg%n"/>
+
     <!-- 控制台日志格式（无颜色） -->
     <property name="CONSOLE_LOG_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%.12X{requestId}] [%thread] %logger{36}.%method:%line %msg%n"/>
     <!-- 控制台日志格式（含颜色） -->
     <property name="CONSOLE_LOG_COLOR_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %highlight([%.12X{requestId}]) %yellow([%thread]) %cyan(%logger{36}.%method:%line) %msg%n"/>
-    <!-- 文件日志格式 -->
-    <property name="FILE_LOG_PATTERN"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{requestId}] [%thread] %logger{36}.%method:%line %msg%n"/>
 
     <!-- 文件日志记录器，日期滚动记录 -->
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_FILE}</file> <!-- 日志文件路径 -->
-        <encoder> <!-- 日志输出格式 -->
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-        <!-- 滚动策略，按文件大小和时间 -->
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <!-- 规定日志文件路径 -->
-            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <!-- 最多留N个日志文件 -->
-            <maxHistory>7</maxHistory>
-            <!-- 每个日志文件最大大小 -->
-            <maxFileSize>50MB</maxFileSize>
-            <!-- 总共日志文件最大大小 -->
-            <totalSizeCap>512MB</totalSizeCap>
-        </rollingPolicy>
-    </appender>
+    <!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+    <!--     <file>${LOG_FILE}</file> &lt;!&ndash; 日志文件路径 &ndash;&gt; -->
+    <!--     <encoder> &lt;!&ndash; 日志输出格式 &ndash;&gt; -->
+    <!--         <pattern>${FILE_LOG_PATTERN}</pattern> -->
+    <!--     </encoder> -->
+    <!--     &lt;!&ndash; 滚动策略，按文件大小和时间 &ndash;&gt; -->
+    <!--     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy"> -->
+    <!--         &lt;!&ndash; 规定日志文件路径 &ndash;&gt; -->
+    <!--         <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
+    <!--         &lt;!&ndash; 最多留N个日志文件 &ndash;&gt; -->
+    <!--         <maxHistory>7</maxHistory> -->
+    <!--         &lt;!&ndash; 每个日志文件最大大小 &ndash;&gt; -->
+    <!--         <maxFileSize>50MB</maxFileSize> -->
+    <!--         &lt;!&ndash; 总共日志文件最大大小 &ndash;&gt; -->
+    <!--         <totalSizeCap>512MB</totalSizeCap> -->
+    <!--     </rollingPolicy> -->
+    <!-- </appender> -->
 
     <!-- 控制台日志记录器 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

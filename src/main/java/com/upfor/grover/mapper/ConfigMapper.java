@@ -1,6 +1,6 @@
 package com.upfor.grover.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mybatisflex.core.BaseMapper;
 import com.upfor.grover.entity.Config;
 import org.apache.ibatis.annotations.Mapper;
 

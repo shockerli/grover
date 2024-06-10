@@ -1,6 +1,6 @@
 package com.upfor.grover.service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mybatisflex.spring.service.impl.ServiceImpl;
 import com.upfor.grover.dto.request.user.UserListRequest;
 import com.upfor.grover.entity.User;
 import com.upfor.grover.mapper.UserMapper;

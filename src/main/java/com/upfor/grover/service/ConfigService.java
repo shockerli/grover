@@ -1,10 +1,10 @@
 package com.upfor.grover.service;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
+import com.mybatisflex.core.query.QueryWrapper;
+import com.mybatisflex.spring.service.impl.ServiceImpl;
 import com.upfor.grover.entity.Config;
 import com.upfor.grover.mapper.ConfigMapper;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +69,7 @@ public class ConfigService extends ServiceImpl<ConfigMapper, Config> {
             return null;
         }
 
-        return this.getOne(Wrappers.<Config>lambdaQuery().eq(Config::getKey, key));
+        return this.getOne(new QueryWrapper().where("key = ?", key));
     }
 
 }
