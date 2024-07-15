@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * Result Code
+ * Api Code
  * <p>
  * 响应错误使用规范
  * <p>
@@ -20,11 +20,12 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum ResultCode implements ErrorCode {
+public enum ApiCode implements ErrorCode {
 
     SUCCESS(200, "Success"),
     VALIDATE_FAILED(400, "Parameter validation failed"),
     FAILED(500, "Failed"),
+    UNKNOWN(700, "Unknown error"),
 
     // 业务-用户相关（1001xx）
     USER_NOT_EXIST(100101, "User not exist"),
@@ -36,21 +37,21 @@ public enum ResultCode implements ErrorCode {
     private final int code; // 错误码
     private final String msg; // 错误描述
 
-    public static ResultCode getByCode(int code) {
-        for (ResultCode resultCode : ResultCode.values()) {
-            if (resultCode.getCode() == code) {
-                return resultCode;
+    public static ApiCode getByCode(int code) {
+        for (ApiCode apiCode : ApiCode.values()) {
+            if (apiCode.getCode() == code) {
+                return apiCode;
             }
         }
-        return null;
+        return UNKNOWN;
     }
 
-    public boolean isSuccess() {
+    public boolean isOk() {
         return this.code == SUCCESS.code;
     }
 
-    public boolean isError() {
-        return this.code != SUCCESS.code;
+    public boolean isFail() {
+        return !this.isOk();
     }
 
 }

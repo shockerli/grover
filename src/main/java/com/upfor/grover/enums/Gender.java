@@ -22,8 +22,8 @@ public enum Gender {
     OTHER(3, "Other"),
     ;
 
-    @JsonValue // Jackson 注解，标识JSON序列化时使用value
-    @EnumValue // 通用枚举注解，标识数据库存储的值是value
+    @JsonValue // Jackson 注解，标识JSON序列化时使用的字段
+    @EnumValue // 通用枚举注解，标识数据库存储时使用的字段
     public final int value; // 枚举值
     public final String desc; // 枚举描述
 

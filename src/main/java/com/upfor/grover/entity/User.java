@@ -17,7 +17,7 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends BaseEntity {
 
-    private String username; // 用户名，全表唯一
+    private String username; // 用户名，唯一
     private Gender gender; // 性别
 
 }

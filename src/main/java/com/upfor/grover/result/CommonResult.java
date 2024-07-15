@@ -1,7 +1,7 @@
 package com.upfor.grover.result;
 
 import com.upfor.grover.enums.ErrorCode;
-import com.upfor.grover.enums.ResultCode;
+import com.upfor.grover.enums.ApiCode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -87,7 +87,7 @@ public class CommonResult<T> {
         this.code = code;
         this.msg = msg;
         if (msg == null || msg.isEmpty()) {
-            ErrorCode c = ResultCode.getByCode(code);
+            ErrorCode c = ApiCode.getByCode(code);
             if (c != null) {
                 this.msg = c.getMsg();
             }
@@ -108,15 +108,15 @@ public class CommonResult<T> {
     }
 
     public static <T> CommonResult<T> success() {
-        return new CommonResult<>(ResultCode.SUCCESS);
+        return new CommonResult<>(ApiCode.SUCCESS);
     }
 
     public static <T> CommonResult<T> success(T data) {
-        return new CommonResult<>(ResultCode.SUCCESS, data);
+        return new CommonResult<>(ApiCode.SUCCESS, data);
     }
 
     public static <T> CommonResult<T> failed() {
-        return new CommonResult<>(ResultCode.FAILED);
+        return new CommonResult<>(ApiCode.FAILED);
     }
 
     public static <T> CommonResult<T> failed(ErrorCode code) {
@@ -128,15 +128,15 @@ public class CommonResult<T> {
     }
 
     public static <T> CommonResult<T> failed(String msg) {
-        return new CommonResult<>(ResultCode.FAILED.getCode(), msg);
+        return new CommonResult<>(ApiCode.FAILED.getCode(), msg);
     }
 
     public static <T> CommonResult<T> validFailed() {
-        return new CommonResult<>(ResultCode.VALIDATE_FAILED);
+        return new CommonResult<>(ApiCode.VALIDATE_FAILED);
     }
 
     public static <T> CommonResult<T> validFailed(String msg) {
-        return new CommonResult<>(ResultCode.VALIDATE_FAILED.getCode(), msg);
+        return new CommonResult<>(ApiCode.VALIDATE_FAILED.getCode(), msg);
     }
 
 }

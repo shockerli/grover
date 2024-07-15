@@ -12,8 +12,8 @@ import lombok.EqualsAndHashCode;
  * <p>
  * 用法：
  * <pre>
- * throw new ApiException(ResultCode.XXX);
- * throw new ApiException(ResultCode.XXX, data);
+ * throw new ApiException(ApiCode.XXX);
+ * throw new ApiException(ApiCode.XXX, data);
  * </pre>
  */
 @Data

@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import static com.upfor.grover.entity.table.UserTableDef.USER;
+
 /**
  * User list request params
  */
@@ -24,7 +26,7 @@ public class UserListRequest {
 
     public QueryWrapper wrapper() {
         QueryWrapper wrapper = new QueryWrapper();
-        wrapper.where("id = ?", id);
+        wrapper.where(USER.ID.eq(id));
         return wrapper;
     }
 
